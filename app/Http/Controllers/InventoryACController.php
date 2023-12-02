@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AddUserRequest;
-use App\Http\Requests\EditUserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -110,7 +108,7 @@ class InventoryACController extends Controller
             'author' => $request->author,
         ]);
 
-        return redirect()->route('inventory_ac.index')->with('message', 'User updated successfully!');
+        return redirect()->route('inventory_ac.index')->with('message', 'Data updated successfully!');
     }
 
     /**
@@ -127,6 +125,6 @@ class InventoryACController extends Controller
 
         $basic->delete();
 
-        return redirect()->route('inventory_ac.index')->with('message', 'User deleted successfully!');
+        return redirect()->route('inventory_ac.index')->with('message', 'Data deleted successfully!');
     }
 }
