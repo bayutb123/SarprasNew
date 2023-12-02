@@ -6,7 +6,7 @@
 
     <!-- Main Content goes here -->
 
-    <a href="{{ route('inventory_ac.create') }}" class="btn btn-primary mb-3">New User</a>
+    <a href="{{ route('inventory_ac.create') }}" class="btn btn-primary mb-3">New AC Inventory</a>
 
     @if (session('message'))
         <div class="alert alert-success">
