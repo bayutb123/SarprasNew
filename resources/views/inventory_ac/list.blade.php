@@ -35,7 +35,7 @@
             @foreach ($items as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->ruangan }}</td>
+                    <td><a style="font-weight: bold" href="{{ route('inventory_ac.edit', $item) }}">{{ $item->ruangan }}</a></td>
                     @if ($item->status == 'ada')
                         <td>
                             <i class="fas fa-check"></i>

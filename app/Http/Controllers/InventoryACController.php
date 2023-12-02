@@ -79,11 +79,12 @@ class InventoryACController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $basic)
+    public function edit($item)
     {
-        return view('basic.edit', [
-            'title' => 'Edit User',
-            'user' => $basic
+        $itemData = InventoryAC::findOrFail($item);
+        return view('inventory_ac.edit', [
+            'title' => $itemData->ruangan . ' - Edit data',
+            'item' => $itemData
         ]);
     }
 
@@ -94,15 +95,20 @@ class InventoryACController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditUserRequest $request, User $basic)
+    public function update(Request $request, $itemId)
     {
-        if($request->filled('password')) {
-            $basic->password = Hash::make($request->password);
-        }
-        $basic->name = $request->name;
-        $basic->last_name = $request->last_name;
-        $basic->email = $request->email;
-        $basic->save();
+        // get item data
+        $item = InventoryAC::findOrFail($itemId);
+        // update item data
+        $item->update([
+            'ruangan' => $request->ruangan,
+            'status' => $request->status,
+            'type' => $request->jenis,
+            'pk' => $request->pk,
+            'production_year' => $request->produksi,
+            'bought_year' => $request->pengadaan,
+            'author' => $request->author,
+        ]);
 
         return redirect()->route('inventory_ac.index')->with('message', 'User updated successfully!');
     }

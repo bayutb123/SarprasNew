@@ -39,7 +39,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="pk">Jenis</label>
-                            <input type="text" class="form-control @error('jenis') is-invalid @enderror" name="jenis"
+                            <input type="number" class="form-control @error('jenis') is-invalid @enderror" name="jenis"
                                 id="jenis" placeholder="jenis" required>
                             @error('jenis')
                                 <span class="text-danger">{{ $message }}</span>

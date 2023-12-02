@@ -8,41 +8,82 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('inventory_ac.update', $user->id) }}" method="post">
+            <form action="{{ route('inventory_ac.update', $item->id) }}" method="post">
                 @csrf
                 @method('put')
 
                 <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="First name" autocomplete="off" value="{{ old('name') ?? $user->name }}">
-                  @error('name')
-                    <span class="text-danger">{{ $message }}</span>
+                  <label for="ruangan">Ruangan</label>
+                  <input type="text" class="form-control @error('ruangan') is-invalid @enderror" name="ruangan"
+                      id="ruangan" placeholder="Ruangan" autocomplete="off" required value="{{ $item->ruangan }}">
+                  @error('ruangan')
+                      <span class="text-danger">{{ $message }}</span>
                   @enderror
-                </div>
+              </div>
 
-                <div class="form-group">
-                  <label for="last_name">Last Name</label>
-                  <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="last_name" placeholder="Last name" autocomplete="off" value="{{ old('last_name') ?? $user->last_name }}">
-                  @error('last_name')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
+              <div class="form-row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="status">Air Conditioner</label>
+                          <select class="custom-select  @error('status') is-invalid @enderror" name="status"
+                              id="status" required>
+                              <option value="ada" @if ($item->status == 'ada')
+                                  selected
+                              @endif>Ada</option>
+                              <option value="tidak" @if ($item->status == 'tidak')
+                                  selected
+                              @endif>Tidak ada</option>
+                          </select>
+                          @error('status')
+                              <span class="text-danger">{{ $message }}</span>
+                          @enderror
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="pk">Jenis</label>
+                          <input type="text" class="form-control @error('jenis') is-invalid @enderror" name="jenis"
+                              id="jenis" placeholder="jenis" required value="{{ $item->type }}">
+                          @error('jenis')
+                              <span class="text-danger">{{ $message }}</span>
+                          @enderror
+                      </div>
+                  </div>
+                  <div class="col-md-2">
+                      <div class="form-group">
+                          <label for="pk">Total PK</label>
+                          <input type="number" class="form-control @error('pk') is-invalid @enderror" name="pk"
+                              id="pk" placeholder="pk" required value="{{ $item->pk }}">
+                          @error('pk')
+                              <span class="text-danger">{{ $message }}</span>
+                          @enderror
+                      </div>
+                  </div>
+              </div>
 
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email" autocomplete="off" value="{{ old('email') ?? $user->email }}">
-                  @error('email')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
+              <div class="form-row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="produksi">Tahun Produksi</label>
+                          <input type="date" class="form-control @error('produksi') is-invalid @enderror"
+                              name="produksi" id="produksi" placeholder="produksi" value="{{ \Carbon\Carbon::parse($item->production_year)->format('Y-m-d') }}" required>
+                          @error('produksi')
+                              <span class="text-danger">{{ $message }}</span>
+                          @enderror
+                      </div>
+                  </div>
+                  <div class="col-md-6">
 
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password" autocomplete="off">
-                  @error('password')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
+                      <div class="form-group">
+                          <label for="pengadaan">Tahun Pengadaan  </label>
+                          <input type="date" class="form-control @error('pengadaan') is-invalid @enderror"
+                              name="pengadaan" id="pengadaan" placeholder="pengadaan" value="{{ \Carbon\Carbon::parse($item->bought_year)->format('Y-m-d') }}" required>
+                          @error('pengadaan')
+                              <span class="text-danger">{{ $message }}</span>
+                          @enderror
+                      </div>
+                  </div>
+              </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="{{ route('inventory_ac.index') }}" class="btn btn-default">Back to list</a>
