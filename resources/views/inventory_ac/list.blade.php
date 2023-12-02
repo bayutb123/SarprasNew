@@ -48,8 +48,8 @@
                         </td>
                     @endif
                     <td>{{ $item->type }}</td>
-                    <td>{{ $item->production_year }}</td>
-                    <td>{{ $item->bought_year }}</td>
+                    <td>{{ \Carbon\Carbon::parse($item->production_year)->format('d-m-Y') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($item->bought_year)->format('d-m-Y') }}</td>
                     <td>{{ $item->pk }}</td>
                 </tr>
             @endforeach

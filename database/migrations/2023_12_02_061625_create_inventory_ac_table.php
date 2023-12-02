@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->string('type')->nullable();
             $table->integer('pk')->default(0);
-            $table->integer('production_year')->nullable();
-            $table->integer('bought_year')->nullable();
+            $table->date('production_year')->nullable();
+            $table->date('bought_year')->nullable();
             $table->string('author')->nullable();
             $table->timestamps();
             $table->softDeletes();

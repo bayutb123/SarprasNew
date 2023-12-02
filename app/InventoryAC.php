@@ -22,7 +22,7 @@ class InventoryAC extends Model
     protected $table = 'inventory_ac';
 
     protected $casts = [
-        'production_year' => 'integer',
-        'bought_year' => 'integer',
+        'production_year' => 'date',
+        'bought_year' => 'date',
     ];
 }

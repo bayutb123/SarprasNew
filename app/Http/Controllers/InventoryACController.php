@@ -19,9 +19,10 @@ class InventoryACController extends Controller
      */
     public function index()
     {
+        $items = InventoryAC::orderBy('created_at', 'asc')->get();
         return view('inventory_ac.list', [
             'title' => 'AC Inventory',
-            'items' => InventoryAC::orderBy('created_at', 'asc')->paginate(10),
+            'items' => $items
         ]);
     }
 
@@ -45,6 +46,9 @@ class InventoryACController extends Controller
      */
     public function store(Request $request)
     {
+        // parse carbon date
+        $request->pengadaan = \Carbon\Carbon::parse($request->pengadaan)->format('Y-m-d');
+        $request->produksi = \Carbon\Carbon::parse($request->produksi)->format('Y-m-d');
         InventoryAC::create([
             'ruangan' => $request->ruangan,
             'status' => $request->status,

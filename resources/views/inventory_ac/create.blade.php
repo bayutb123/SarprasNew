@@ -62,7 +62,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="produksi">Tahun Produksi</label>
-                            <input type="number" minlength="4" maxlength="4" class="form-control @error('produksi') is-invalid @enderror"
+                            <input type="date" class="form-control @error('produksi') is-invalid @enderror"
                                 name="produksi" id="produksi" placeholder="produksi" required>
                             @error('produksi')
                                 <span class="text-danger">{{ $message }}</span>
@@ -73,7 +73,7 @@
 
                         <div class="form-group">
                             <label for="pengadaan">Tahun Pengadaan</label>
-                            <input type="number" minlength="4" maxlength="4" class="form-control @error('pengadaan') is-invalid @enderror"
+                            <input type="date" class="form-control @error('pengadaan') is-invalid @enderror"
                                 name="pengadaan" id="pengadaan" placeholder="pengadaan" required>
                             @error('pengadaan')
                                 <span class="text-danger">{{ $message }}</span>
