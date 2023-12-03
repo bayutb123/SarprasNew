@@ -32,4 +32,9 @@ Route::get('/blank', function () {
 
 Route::middleware('auth')->group(function() {
     Route::resource('inventory_ac', InventoryACController::class);
+    Route::resource('kebersihan_outdoor', KebersihanOutdoorController::class);
+    Route::get('kebersihan_outdoor/period/{id}', 'KebersihanOutdoorController@iperiod')->name('kebersihan_outdoor.period');
+    Route::get('kebersihan_outdoor/create/period/{id}', 'KebersihanOutdoorController@cperiod')->name('kebersihan_outdoor.create.period');
+    Route::post('kebersihan_outdoor/store/period', 'KebersihanOutdoorController@speriod')->name('kebersihan_outdoor.store.period');
+    
 });

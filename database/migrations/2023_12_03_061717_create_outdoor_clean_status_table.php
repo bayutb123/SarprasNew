@@ -11,18 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventory_ac', function (Blueprint $table) {
+        Schema::create('outdoor_clean_status', function (Blueprint $table) {
             $table->id();
-            $table->string('ruangan');
-            $table->string('status')->nullable();
-            $table->string('type')->nullable();
-            $table->integer('pk')->default(0);
-            $table->date('production_year')->nullable();
-            $table->date('bought_year')->nullable();
+            $table->string('name');
+            $table->string('status');
+            $table->date('date');
             $table->unsignedBigInteger('author');
+            $table->unsignedBigInteger('period_id');
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('period_id')->references('id')->on('outdoor_clean_period');
             $table->foreign('author')->references('id')->on('users');
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventory_ac');
+        Schema::dropIfExists('outdoor_clean_status');
     }
 };

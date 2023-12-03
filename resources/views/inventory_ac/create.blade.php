@@ -11,7 +11,7 @@
             <form action="{{ route('inventory_ac.store') }}" method="post">
                 @csrf
 
-                <input type="hidden" name="author" value="{{ Auth::user()->name }}">
+                <input type="hidden" name="author" value="{{ Auth::user()->id }}">
 
                 <div class="form-group">
                     <label for="ruangan">Ruangan</label>
@@ -84,8 +84,6 @@
 
 
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ route('inventory_ac.index') }}" class="btn btn-default">Back to list</a>
-
             </form>
         </div>
     </div>

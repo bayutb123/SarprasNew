@@ -65,6 +65,14 @@
             </a>
         </li>
 
+        <!-- Nav Item -->
+        <li class="nav-item {{ Nav::isRoute('kebersihan_outdoor.index') }}">
+            <a class="nav-link" href="{{ route('kebersihan_outdoor.index') }}">
+                <i class="fas fa-fw fa-plus"></i>
+                <span>{{ __('Kebersihan Outdoor') }}</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Profile -->
         <li class="nav-item {{ Nav::isRoute('profile') }}">
             <a class="nav-link" href="{{ route('profile') }}">
