@@ -37,7 +37,18 @@ class KebersihanOutdoorController extends Controller
 
         // format date d-m-Y use Carbon
         foreach ($items as $item) {
-            $item->date = $item->date->format('d-M-Y');
+            if ($item->statusw1date != null) {
+                $item->statusw1date = \Carbon\Carbon::parse($item->statusw1date)->format('d-m-Y');
+            }
+            if ($item->statusw2date != null) {
+                $item->statusw2date = \Carbon\Carbon::parse($item->statusw2date)->format('d-m-Y');
+            }
+            if ($item->statusw3date != null) {
+                $item->statusw3date = \Carbon\Carbon::parse($item->statusw3date)->format('d-m-Y');
+            }
+            if ($item->statusw4date != null) {
+                $item->statusw4date = \Carbon\Carbon::parse($item->statusw4date)->format('d-m-Y');
+            }
         }
         return view('kebersihan_outdoor.list_period', [
             'title' => 'KEBERSIHAN LUAR RUANGAN BULANAN',
@@ -101,8 +112,14 @@ class KebersihanOutdoorController extends Controller
     {
         $status = OutdoorCleanStatus::create([
             'name' => $request->keterangan,
-            'status' => $request->keadaan,
-            'date' => $request->tanggal,
+            'statusw1' => $request->keadaan1,
+            'statusw2' => $request->keadaan2,
+            'statusw3' => $request->keadaan3,
+            'statusw4' => $request->keadaan4,
+            'statusw1date' => $request->tanggal1,
+            'statusw2date' => $request->tanggal2,
+            'statusw3date' => $request->tanggal3,
+            'statusw4date' => $request->tanggal4,
             'author' => $request->author,
             'period_id' => $request->period_id,
         ]);
