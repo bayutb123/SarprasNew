@@ -28,14 +28,14 @@
                 <th colspan="2">Minggu Ke-4</th>
             </tr>
             <tr>
-                <th>Bersih</th>
-                <th>Tidak Bersih</th>
-                <th>Bersih</th>
-                <th>Tidak Bersih</th>
-                <th>Bersih</th>
-                <th>Tidak Bersih</th>
-                <th>Bersih</th>
-                <th>Tidak Bersih</th>
+                <th width="10%">Bersih</th>
+                <th width="10%">Tidak Bersih</th>
+                <th width="10%">Bersih</th>
+                <th width="10%">Tidak Bersih</th>
+                <th width="10%">Bersih</th>
+                <th width="10%">Tidak Bersih</th>
+                <th width="10%">Bersih</th>
+                <th width="10%">Tidak Bersih</th>
             </tr>
         </thead>
 
