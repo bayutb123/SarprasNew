@@ -51,7 +51,7 @@ class KebersihanOutdoorController extends Controller
             }
         }
         return view('kebersihan_outdoor.list_period', [
-            'title' => 'KEBERSIHAN LUAR RUANGAN BULANAN',
+            'title' => 'Laporan Kebersihan Luar Ruangan - ' . $period->month . ' ' . $period->year . '',
             'period' => $period,
             'items' => $items
         ]);
@@ -147,7 +147,7 @@ class KebersihanOutdoorController extends Controller
     public function edit($item)
     {
         $itemData = InventoryAC::findOrFail($item);
-        return view('kebersihan_outdoor.edit', [
+        return view('kebersihan_outdoor.edit_period', [
             'title' => $itemData->ruangan . ' - Edit data',
             'item' => $itemData
         ]);
